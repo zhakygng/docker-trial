@@ -16,3 +16,12 @@ services:
             dockerfile: app.docker
         volumes:
             - ./app/www:/var/www
+    data:
+        build:
+            context: ./db
+            dockerfile: db.docker
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+        volumes:
+            - ./db/data:/var/lib/mysql   
+        
