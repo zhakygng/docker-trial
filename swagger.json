@@ -1,0 +1,1485 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "BTPN enterprise API, created based on current BTPN WOW WSDL on middleware",
+    "version" : "1.0.0",
+    "title" : "Enterprise API",
+    "contact" : {
+      "email" : "zhaky.hadi@btpn.com"
+    }
+  },
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/customers" : {
+      "get" : {
+        "summary" : "getCustomerEx",
+        "parameters" : [ {
+          "name" : "commonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "identificationType",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "identificationFlags",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "mobileNo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "flags",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "callerId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "orgUnitId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "GenericResponse" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                },
+                "CustomerInformation" : {
+                  "$ref" : "#/definitions/customer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "createCustomerEx",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "CommonParam" : {
+                "$ref" : "#/definitions/CommonParam"
+              },
+              "Information" : {
+                "$ref" : "#/definitions/customer"
+              },
+              "UnstructuredData" : {
+                "$ref" : "#/definitions/UnstructuredData"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "responseCustExEform" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "summary" : "updateCustomerEx",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "CommonParam" : {
+                "$ref" : "#/definitions/CommonParam"
+              },
+              "Information" : {
+                "$ref" : "#/definitions/customer"
+              },
+              "UnstructuredData" : {
+                "$ref" : "#/definitions/UnstructuredData"
+              },
+              "flags" : {
+                "type" : "string"
+              },
+              "callerId" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "ResponseUpdateCustExEform" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "removeCustomerEx",
+        "parameters" : [ {
+          "name" : "CommonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "RemoveCustEx",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "ResponseUpdateCustExEform" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "-- updateCustomerEx",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "CommonParam" : {
+                "$ref" : "#/definitions/CommonParam"
+              },
+              "Information" : {
+                "$ref" : "#/definitions/customer"
+              },
+              "UnstructuredData" : {
+                "$ref" : "#/definitions/UnstructuredData"
+              },
+              "flags" : {
+                "type" : "string"
+              },
+              "callerId" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "ResponseUpdateCustExEform" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/check/dhib" : {
+      "get" : {
+        "summary" : "DHIBChecking",
+        "parameters" : [ {
+          "name" : "CommonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fullName",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "birthDate",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "responseCode" : {
+                  "type" : "string"
+                },
+                "responseDesc" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/check/duplicate" : {
+      "get" : {
+        "summary" : "duplicateChecking",
+        "parameters" : [ {
+          "name" : "CommonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "idCardNumber",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "phoneNo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "productType",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "genericResponse" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                },
+                "isAccountExist" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/check/duplicate/list" : {
+      "get" : {
+        "summary" : "duplicateCheckingList",
+        "parameters" : [ {
+          "name" : "CommonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fullName",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "birthDate",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "productType",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "genericResponse" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                },
+                "customerDataList" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "name" : {
+                        "type" : "string"
+                      },
+                      "dob" : {
+                        "type" : "string"
+                      },
+                      "maidenName" : {
+                        "type" : "string"
+                      },
+                      "city" : {
+                        "type" : "string"
+                      },
+                      "address" : {
+                        "type" : "string"
+                      },
+                      "pob" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts" : {
+      "get" : {
+        "summary" : "inquiryDataBySource",
+        "parameters" : [ {
+          "name" : "jenisSource",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "sourceNo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "kodeCabang",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "tipeDeposito",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "commonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "cif" : {
+                    "type" : "string"
+                  },
+                  "nama" : {
+                    "type" : "string"
+                  },
+                  "phoneNo" : {
+                    "type" : "string"
+                  },
+                  "email" : {
+                    "type" : "string"
+                  },
+                  "productCode" : {
+                    "type" : "string"
+                  },
+                  "responseCode" : {
+                    "type" : "string"
+                  },
+                  "responseDesc" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{account}" : {
+      "get" : {
+        "summary" : "getAccount, getCurrentBalance",
+        "parameters" : [ {
+          "name" : "commonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "responseCode" : {
+                  "type" : "string"
+                },
+                "balance" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "account",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/accounts/{account}/transactions" : {
+      "get" : {
+        "summary" : "getTransactionHistory, LastN_Mutation",
+        "parameters" : [ {
+          "name" : "dateBegin",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "dateEnd",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "start",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "length",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oldestToNewest",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "transactionDateTime",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "amountMaskingFlag",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "commonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "row_count",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "start_index",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Status" : {
+                  "type" : "string"
+                },
+                "transaction" : {
+                  "$ref" : "#/definitions/transaction"
+                },
+                "start" : {
+                  "type" : "string"
+                },
+                "total" : {
+                  "type" : "string"
+                },
+                "mutation" : {
+                  "$ref" : "#/definitions/mutation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "account",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/accounts/{accountNo}/statements" : {
+      "get" : {
+        "summary" : "getAccountStatement",
+        "parameters" : [ {
+          "name" : "startDate",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "commonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "listResponse" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "date" : {
+                        "type" : "string"
+                      },
+                      "amount" : {
+                        "type" : "string"
+                      },
+                      "description" : {
+                        "type" : "string"
+                      },
+                      "description2" : {
+                        "type" : "string"
+                      },
+                      "trxIndicator" : {
+                        "type" : "string"
+                      },
+                      "currency" : {
+                        "type" : "string"
+                      },
+                      "endingBalance" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "GenericResponse" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "accountNo",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/crn/{msisdn}" : {
+      "get" : {
+        "summary" : "getCRNbyMsisdn",
+        "parameters" : [ {
+          "name" : "CommonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "GenericResponseDoc" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                },
+                "CRNList" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "CIF" : {
+                        "type" : "string"
+                      },
+                      "CRN" : {
+                        "type" : "string"
+                      },
+                      "sourceSystem" : {
+                        "type" : "string"
+                      },
+                      "primaryCIF" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "msisdn",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/loan" : {
+      "get" : {
+        "summary" : "inquiryDisbursement",
+        "parameters" : [ {
+          "name" : "CommonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "InquiryDisburseData",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "UnstructuredData",
+          "in" : "query",
+          "required" : false,
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "key" : {
+                "type" : "string"
+              },
+              "value" : {
+                "type" : "string"
+              }
+            }
+          }
+        }, {
+          "name" : "processingCodeEQ",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "GeneralResponse" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                },
+                "InquiryDisbursementData" : {
+                  "type" : "object",
+                  "properties" : {
+                    "simulation" : {
+                      "type" : "object",
+                      "properties" : {
+                        "categoryPeriod" : {
+                          "type" : "string"
+                        },
+                        "installmentAmount" : {
+                          "type" : "string"
+                        },
+                        "matuiryDate" : {
+                          "type" : "string"
+                        },
+                        "fee" : {
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "interestAmount" : {
+                      "type" : "string"
+                    },
+                    "referenceNumber" : {
+                      "type" : "string"
+                    }
+                  }
+                },
+                "UnstructuredData" : {
+                  "$ref" : "#/definitions/UnstructuredData"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "createDisbursement",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "CommonParam" : {
+                "$ref" : "#/definitions/CommonParam"
+              },
+              "DisbursementData" : {
+                "$ref" : "#/definitions/disbursement"
+              },
+              "UnstructuredData" : {
+                "$ref" : "#/definitions/UnstructuredData"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "GeneralResponse" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                },
+                "DisburseData" : {
+                  "type" : "object",
+                  "properties" : {
+                    "cif" : {
+                      "type" : "string"
+                    },
+                    "loanBranch" : {
+                      "type" : "string"
+                    },
+                    "loanType" : {
+                      "type" : "string"
+                    },
+                    "loanReference" : {
+                      "type" : "string"
+                    },
+                    "interestAmount" : {
+                      "type" : "string"
+                    },
+                    "creditAmount" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/loan/advice" : {
+      "get" : {
+        "summary" : "disburseAdvice",
+        "parameters" : [ {
+          "name" : "CommonParam",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "DisbursementData",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "UnstructuredData",
+          "in" : "query",
+          "required" : false,
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "key" : {
+                "type" : "string"
+              },
+              "value" : {
+                "type" : "string"
+              }
+            }
+          }
+        }, {
+          "name" : "processingCodeEQ",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "transmissionDateTimeOriginal",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "retry",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "GeneralResponse" : {
+                  "$ref" : "#/definitions/GenericResponse"
+                },
+                "DisburseData" : {
+                  "type" : "object",
+                  "properties" : {
+                    "cif" : {
+                      "type" : "string"
+                    },
+                    "loanBranch" : {
+                      "type" : "string"
+                    },
+                    "loanType" : {
+                      "type" : "string"
+                    },
+                    "loanReference" : {
+                      "type" : "string"
+                    },
+                    "interestAmount" : {
+                      "type" : "string"
+                    },
+                    "creditAmount" : {
+                      "type" : "string"
+                    }
+                  }
+                },
+                "retry" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "address" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "address1" : {
+          "type" : "string"
+        },
+        "address2" : {
+          "type" : "string"
+        },
+        "address3" : {
+          "type" : "string"
+        },
+        "address4" : {
+          "type" : "string"
+        },
+        "address5" : {
+          "type" : "string"
+        },
+        "address6" : {
+          "type" : "string"
+        },
+        "address7" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        },
+        "postalCode" : {
+          "type" : "string"
+        },
+        "phone1" : {
+          "type" : "string"
+        },
+        "phone2" : {
+          "type" : "string"
+        },
+        "phone3" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        }
+      }
+    },
+    "customer" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "parentId" : {
+          "type" : "string"
+        },
+        "agentId" : {
+          "type" : "string"
+        },
+        "atmCardNo" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "customerNumber" : {
+          "type" : "string"
+        },
+        "customerType" : {
+          "type" : "string"
+        },
+        "customerTypeCategory" : {
+          "type" : "string"
+        },
+        "dateOfBirth" : {
+          "type" : "string"
+        },
+        "designation" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "employeeId" : {
+          "type" : "string"
+        },
+        "forecastTransaction" : {
+          "type" : "string"
+        },
+        "gender" : {
+          "type" : "string"
+        },
+        "highRiskBusiness" : {
+          "type" : "string"
+        },
+        "highRiskCustomer" : {
+          "type" : "string"
+        },
+        "idCardExpirationDate" : {
+          "type" : "string"
+        },
+        "idCardNo" : {
+          "type" : "string"
+        },
+        "idCardType" : {
+          "type" : "string"
+        },
+        "income" : {
+          "type" : "string"
+        },
+        "industrySectorOfEmployer" : {
+          "type" : "string"
+        },
+        "optimaActivate" : {
+          "type" : "string"
+        },
+        "taxExempted" : {
+          "type" : "string"
+        },
+        "job" : {
+          "type" : "string"
+        },
+        "language" : {
+          "type" : "string"
+        },
+        "lastEducation" : {
+          "type" : "string"
+        },
+        "maritalStatus" : {
+          "type" : "string"
+        },
+        "marketingSourceCode" : {
+          "type" : "string"
+        },
+        "mobileNumber" : {
+          "type" : "string"
+        },
+        "mothersMaidenName" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "nationality" : {
+          "type" : "string"
+        },
+        "notificationMode" : {
+          "type" : "string"
+        },
+        "occupation" : {
+          "type" : "string"
+        },
+        "orgUnitId" : {
+          "type" : "string"
+        },
+        "placeOfBirth" : {
+          "type" : "string"
+        },
+        "province" : {
+          "type" : "string"
+        },
+        "purposeOfAccount" : {
+          "type" : "string"
+        },
+        "purposeOfTransaction" : {
+          "type" : "string"
+        },
+        "referralNumber" : {
+          "type" : "string"
+        },
+        "religion" : {
+          "type" : "string"
+        },
+        "shortName" : {
+          "type" : "string"
+        },
+        "sourceOfFund" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "street1" : {
+          "type" : "string"
+        },
+        "street2" : {
+          "type" : "string"
+        },
+        "taxCardNumber" : {
+          "type" : "string"
+        },
+        "territoryCode" : {
+          "type" : "string"
+        },
+        "zipCode" : {
+          "type" : "string"
+        },
+        "pojkPihakKetiga" : {
+          "type" : "string"
+        },
+        "pojkPenawaran" : {
+          "type" : "string"
+        },
+        "address" : {
+          "$ref" : "#/definitions/address"
+        },
+        "branchCode" : {
+          "type" : "string"
+        },
+        "identification" : {
+          "type" : "string"
+        },
+        "agentId2" : {
+          "type" : "string"
+        },
+        "residenceStatus" : {
+          "type" : "string"
+        },
+        "longMobileNumberOwnership" : {
+          "type" : "string"
+        },
+        "numbOfDependents" : {
+          "type" : "string"
+        },
+        "longOccupyResidence" : {
+          "type" : "string"
+        },
+        "loanOtherBank" : {
+          "type" : "string"
+        },
+        "havingOtherBankAcc" : {
+          "type" : "string"
+        },
+        "prevAcquiredProduct" : {
+          "type" : "string"
+        },
+        "prevAcquiredProductEtc" : {
+          "type" : "string"
+        },
+        "yearsOfJobExp" : {
+          "type" : "string"
+        },
+        "numbOfMonthlyBill" : {
+          "type" : "string"
+        },
+        "costOfRent" : {
+          "type" : "string"
+        },
+        "numbOfFamilyHavingMobileMoney" : {
+          "type" : "string"
+        },
+        "havingVehicle" : {
+          "type" : "string"
+        },
+        "untitleName" : {
+          "type" : "string"
+        },
+        "incomeAmnt" : {
+          "type" : "string"
+        },
+        "dariPihakKetiga" : {
+          "type" : "string"
+        }
+      }
+    },
+    "UnstructuredData" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "CommonParam" : {
+      "type" : "object",
+      "properties" : {
+        "pan" : {
+          "type" : "string"
+        },
+        "processingCode" : {
+          "type" : "string"
+        },
+        "channelId" : {
+          "type" : "string"
+        },
+        "channelType" : {
+          "type" : "string"
+        },
+        "node" : {
+          "type" : "string"
+        },
+        "currencyAmount" : {
+          "type" : "string"
+        },
+        "amount" : {
+          "type" : "string"
+        },
+        "currencyfee" : {
+          "type" : "string"
+        },
+        "fee" : {
+          "type" : "string"
+        },
+        "transmissionDateTime" : {
+          "type" : "string"
+        },
+        "requestId" : {
+          "type" : "string"
+        },
+        "acqId" : {
+          "type" : "string"
+        },
+        "referenceNo" : {
+          "type" : "string"
+        },
+        "terminalId" : {
+          "type" : "string"
+        },
+        "terminalName" : {
+          "type" : "string"
+        },
+        "original" : {
+          "type" : "string"
+        },
+        "userId" : {
+          "type" : "string"
+        },
+        "orgUnitId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "transaction" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "transactionDateTime" : {
+          "type" : "string"
+        },
+        "account" : {
+          "type" : "string"
+        },
+        "counterpart" : {
+          "type" : "string"
+        },
+        "useCaseId" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "reserved1" : {
+          "type" : "string"
+        },
+        "reserved2" : {
+          "type" : "string"
+        },
+        "debitFlags" : {
+          "type" : "string"
+        },
+        "amount" : {
+          "type" : "string"
+        },
+        "fee" : {
+          "type" : "string"
+        },
+        "balance" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GenericResponse" : {
+      "type" : "object",
+      "properties" : {
+        "responseCode" : {
+          "type" : "string"
+        },
+        "responseDesc" : {
+          "type" : "string"
+        }
+      }
+    },
+    "mutation" : {
+      "type" : "object",
+      "properties" : {
+        "next" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string"
+        },
+        "startIndex" : {
+          "type" : "string"
+        },
+        "flagStartBisnisDate" : {
+          "type" : "string"
+        },
+        "lastProcessingDate" : {
+          "type" : "string"
+        },
+        "transactions" : {
+          "$ref" : "#/definitions/transaction"
+        }
+      }
+    },
+    "disbursement" : {
+      "type" : "object",
+      "properties" : {
+        "paymentInstrumentType" : {
+          "type" : "string"
+        },
+        "idHeader" : {
+          "type" : "string"
+        },
+        "crn" : {
+          "type" : "string"
+        },
+        "cif" : {
+          "type" : "string"
+        },
+        "idCustomer" : {
+          "type" : "string"
+        },
+        "idWallet" : {
+          "type" : "string"
+        },
+        "idPi" : {
+          "type" : "string"
+        },
+        "customerName" : {
+          "type" : "string"
+        },
+        "loanBranch" : {
+          "type" : "string"
+        },
+        "loanType" : {
+          "type" : "string"
+        },
+        "idLoanType" : {
+          "type" : "string"
+        },
+        "idCategoryPeriod" : {
+          "type" : "string"
+        },
+        "loanReference" : {
+          "type" : "string"
+        },
+        "amountOutstanding" : {
+          "type" : "string"
+        },
+        "amountPinalty" : {
+          "type" : "string"
+        },
+        "amountDisbursal" : {
+          "type" : "string"
+        },
+        "amountInstallment" : {
+          "type" : "string"
+        },
+        "actualRate" : {
+          "type" : "string"
+        },
+        "startDate" : {
+          "type" : "string"
+        },
+        "maturityDate" : {
+          "type" : "string"
+        },
+        "contractDate" : {
+          "type" : "string"
+        },
+        "chargeCode1" : {
+          "type" : "string"
+        },
+        "chargeAmount1" : {
+          "type" : "string"
+        },
+        "chargeCode2" : {
+          "type" : "string"
+        },
+        "chargeAmount2" : {
+          "type" : "string"
+        },
+        "chargeCode3" : {
+          "type" : "string"
+        },
+        "chargeAmount3" : {
+          "type" : "string"
+        },
+        "lokasiProyek" : {
+          "type" : "string"
+        },
+        "sektorEkonomi" : {
+          "type" : "string"
+        },
+        "golonganPenjamin" : {
+          "type" : "string"
+        },
+        "bagianYangDijamin" : {
+          "type" : "string"
+        },
+        "jenisKredit" : {
+          "type" : "string"
+        },
+        "orientasiPenggunaan" : {
+          "type" : "string"
+        },
+        "sifatKredit" : {
+          "type" : "string"
+        },
+        "jenisPenggunaan" : {
+          "type" : "string"
+        },
+        "tujuanPenggunaanDana" : {
+          "type" : "string"
+        },
+        "gajiBersih" : {
+          "type" : "string"
+        },
+        "alasanTunggakan" : {
+          "type" : "string"
+        },
+        "alasanTidakDitagih" : {
+          "type" : "string"
+        },
+        "namaDiSID" : {
+          "type" : "string"
+        },
+        "tanggalMacet" : {
+          "type" : "string"
+        },
+        "statusKredit" : {
+          "type" : "string"
+        },
+        "jenisValuta" : {
+          "type" : "string"
+        },
+        "nomorDIN" : {
+          "type" : "string"
+        },
+        "plafondAwal" : {
+          "type" : "string"
+        },
+        "statusRumah" : {
+          "type" : "string"
+        },
+        "fasilitasKredit" : {
+          "type" : "string"
+        },
+        "sukuBungaFlat" : {
+          "type" : "string"
+        },
+        "tanggalBIChecking" : {
+          "type" : "string"
+        },
+        "rekeningLama" : {
+          "type" : "string"
+        },
+        "kolek2BerdasarkanAlasan" : {
+          "type" : "string"
+        },
+        "statusPinjaman" : {
+          "type" : "string"
+        },
+        "golonganDebitur" : {
+          "type" : "string"
+        },
+        "creditAccountNo" : {
+          "type" : "string"
+        },
+        "creditAccountType" : {
+          "type" : "string"
+        },
+        "creditAccountFlags" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
